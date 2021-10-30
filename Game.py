@@ -62,6 +62,7 @@ def clue2(b):
         bh4.config(text=counter)
         lose2()
     elif number > b >= number - 15:
+
         bh3.config(text="Guessed Low")
         counter = counter + 1
         bh4.config(text=counter)
@@ -164,6 +165,21 @@ def back2():
     home()
 
 
+# creating function to undo
+def undo(c):
+    global counter, be4
+    c = counter-1
+    counter = c
+    be4.config(text=c)
+
+
+def undo2(d):
+    global counter, bh4
+    d = counter-1
+    bh4.config(text=d)
+    counter = d
+
+
 def home():
     global root
     root = Tk()
@@ -182,7 +198,7 @@ def home():
 
 # creating functions for easy level
 def easy():
-    global be, be2, be3, be4, entry, new_window
+    global be, be2, be3, be4, entry, new_window, counter
 
     new_window = Tk()
     new_window.title("Sintrosoft's Guess Number Game--- Easy Level")
@@ -219,10 +235,12 @@ def easy():
     # creating box for showing no. of attempts used
     be4 = Button(new_window, text="", width="20")
     canvas2.create_window(150, 350, window=be4)
+    be5 = Button(new_window, text="Undo", width="15", height="1", font=('Arial', 15), fg="#1597E5", command=lambda: undo(counter))
+    canvas2.create_window(400, 300, window=be5)
 
 
 def hard():
-    global new_window2, bh2, bh3, bh4, entry1
+    global new_window2, bh2, bh3, bh4, entry1, counter
 
     new_window2 = Tk()
     new_window2.title("Sintrosoft's Guess Number Game--- Hard Level")
@@ -258,6 +276,10 @@ def hard():
     # creating box for showing no. of attempts used
     bh4 = Button(new_window2, text="", width="20")
     canvas3.create_window(150, 350, window=bh4)
+    # creating undo  button
+    be5 = Button(new_window2, text="Undo", width="15", height="1", font=('Arial', 15), fg="#1597E5", command=lambda: undo2(counter))
+    canvas3.create_window(400, 300, window=be5)
 
 
 home()
+
