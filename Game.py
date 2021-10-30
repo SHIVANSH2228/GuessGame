@@ -10,6 +10,7 @@ from random import randint
 # declaring variables
 global number, counter
 number = randint(1, 100)
+print(number)
 counter = 0
 sent = "Correct Number Is  "
 
@@ -48,23 +49,27 @@ def gen():
 
 # creating function for clue box of hard level
 def clue2(b):
-    global counter
+    global counter, bh4
     b = int(b)
     if number < b <= number + 15:
         bh3.config(text="Guessed High")
         counter = counter + 1
+        bh4.config(text=counter)
         lose2()
     elif number + 15 < b:
         bh3.config(text="Guessed Too High")
         counter = counter + 1
+        bh4.config(text=counter)
         lose2()
     elif number > b >= number - 15:
         bh3.config(text="Guessed Low")
         counter = counter + 1
+        bh4.config(text=counter)
         lose2()
     elif b < number - 15:
         bh3.config(text="Guessed Too Low")
         counter = counter + 1
+        bh4.config(text=counter)
         lose2()
 
     elif b == number:
@@ -74,23 +79,27 @@ def clue2(b):
 
 # creating function for clue box of easy level
 def clue(a):
-    global counter
+    global counter, be4
     a = int(a)
     if number < a <= number + 15:
         be3.config(text="Guessed High")
         counter = counter + 1
+        be4.config(text=counter)
         lose()
     elif number + 15 < a:
         be3.config(text="Guessed Too High")
         counter = counter + 1
+        be4.config(text=counter)
         lose()
     elif number > a >= number - 15:
         be3.config(text="Guessed Low")
         counter = counter + 1
+        be4.config(text=counter)
         lose()
     elif a < number - 15:
         be3.config(text="Guessed Too Low")
         counter = counter + 1
+        be4.config(text=counter)
         lose()
 
     elif a == number:
@@ -122,7 +131,6 @@ def lose():
         messagebox2("Game Over!!!",
                     "You Lose!!!\nYou Ran Out Of Moves.\nCorrect Number Is Displayed In The Box.\nThank You "
                     "For Playing.")
-        entry.insert
 
 
 # creating disable option for easy level
@@ -174,7 +182,7 @@ def home():
 
 # creating functions for easy level
 def easy():
-    global be, be2, be3, entry, new_window
+    global be, be2, be3, be4, entry, new_window
 
     new_window = Tk()
     new_window.title("Sintrosoft's Guess Number Game--- Easy Level")
@@ -205,10 +213,16 @@ def easy():
     # creating clue box
     be3 = Button(new_window, text="", width="20")
     canvas2.create_window(150, 250, window=be3)
+    # creating label for no. of attempts box
+    label4 = Label(new_window, text="No. Of Attempts", fg="#1597E5", bg="#CEE5D0", font=('Arial', 20))
+    canvas2.create_window(150, 300, window=label4)
+    # creating box for showing no. of attempts used
+    be4 = Button(new_window, text="", width="20")
+    canvas2.create_window(150, 350, window=be4)
 
 
 def hard():
-    global new_window2, bh2, bh3, entry1
+    global new_window2, bh2, bh3, bh4, entry1
 
     new_window2 = Tk()
     new_window2.title("Sintrosoft's Guess Number Game--- Hard Level")
@@ -238,6 +252,12 @@ def hard():
     # creating clue box
     bh3 = Button(new_window2, text="", width="20")
     canvas3.create_window(150, 250, window=bh3)
+    # creating label for no. of attempts box
+    label_h4 = Label(new_window2, text="No. Of Attempts", fg="#1597E5", bg="#CEE5D0", font=('Arial', 20))
+    canvas3.create_window(150, 300, window=label_h4)
+    # creating box for showing no. of attempts used
+    bh4 = Button(new_window2, text="", width="20")
+    canvas3.create_window(150, 350, window=bh4)
 
 
 home()
