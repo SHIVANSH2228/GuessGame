@@ -10,7 +10,6 @@ from random import randint
 # declaring variables
 global number, counter
 number = randint(1, 100)
-print(number)
 counter = 0
 sent = "Correct Number Is  "
 
